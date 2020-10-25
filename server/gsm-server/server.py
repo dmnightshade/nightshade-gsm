@@ -1,13 +1,21 @@
 import json
+import glob
 import zipfile as zipf
 from socketserver import TCPServer, StreamRequestHandler
 
 def addon_loader():
-    addonFile = zipf.ZipFile('games/game4.zip')
-    manifestFileRaw = addonFile.read('manifest.json')
-    manifestFile = json.loads(manifestFileRaw)
+    gameLoads = dict()
+    dirName = './games'
+    zipList = glob.glob(dirName + '/*.zip')
 
-    return (manifestFile)
+
+    for zipname in zipList:
+        addonFile = zipf.ZipFile(zipname)
+        manifestFileRaw = addonFile.read('manifest.json')
+        manifestFile = json.loads(manifestFileRaw)
+        gameLoads = gameLoads | manifestFile
+        
+    return (gameLoads)
 
 class Handler(StreamRequestHandler):
     newgames = addon_loader()
