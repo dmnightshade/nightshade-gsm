@@ -4,10 +4,14 @@ from socketserver import TCPServer, StreamRequestHandler
 
 def addon_loader():
     addonFile = zipf.ZipFile('games/game4.zip')
-    manifestFile = addonFile.read('manifest.json')
-    print(manifestFile)
+    manifestFileRaw = addonFile.read('manifest.json')
+    manifestFile = json.loads(manifestFileRaw)
+
+    return (manifestFile)
 
 class Handler(StreamRequestHandler):
+    newgames = addon_loader()
+    #print(newgames)
     games = {
         "game2": {
             "exec": "program1",
@@ -18,6 +22,7 @@ class Handler(StreamRequestHandler):
         },
         "game1": {"exec": "program2", "args": {"-a3": {"default": 300}}},
     }
+    games = games | newgames
 
     def handle(self) -> None:
         print(f"Connection from: {self.client_address}")
