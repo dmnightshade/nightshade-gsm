@@ -4,7 +4,7 @@
 		"args": {
 			"-a1": {
 				"default": 100,
-				"editable": "False"
+				"editable": false
 			},
 			"-a2": {
 				"default": 200
