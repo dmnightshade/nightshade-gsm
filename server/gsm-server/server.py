@@ -1,5 +1,5 @@
 import json
-from socketserver import TCPServer, StreamRequestHandler
+from socketserver import StreamRequestHandler, ThreadingTCPServer
 
 
 class Handler(StreamRequestHandler):
@@ -30,7 +30,7 @@ class Handler(StreamRequestHandler):
 
 
 def start_server() -> None:
-    with TCPServer(("127.0.0.1", 12345), Handler) as server:
+    with ThreadingTCPServer(("127.0.0.1", 12345), Handler) as server:
         server.serve_forever()
 
 
