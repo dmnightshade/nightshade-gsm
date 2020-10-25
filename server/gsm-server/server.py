@@ -26,5 +26,4 @@ def start_server() -> None:
 
 
 if __name__ == "__main__":
-    addon_loader()
     start_server()
