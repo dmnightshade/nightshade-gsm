@@ -14,24 +14,12 @@ def addon_loader():
         manifestFileRaw = addonFile.read('manifest.json')
         manifestFile = json.loads(manifestFileRaw)
         gameLoads = gameLoads | manifestFile
-        
+
     return (gameLoads)
 
 class Handler(StreamRequestHandler):
-    newgames = addon_loader()
-    #print(newgames)
-    games = {
-        "game2": {
-            "exec": "program1",
-            "args": {
-                "-a1": {"default": 100, "editable": False},
-                "-a2": {"default": 200},
-            },
-        },
-        "game1": {"exec": "program2", "args": {"-a3": {"default": 300}}},
-    }
-    games = games | newgames
-
+    games = addon_loader()
+    
     def handle(self) -> None:
         print(f"Connection from: {self.client_address}")
         while True:

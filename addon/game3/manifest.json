@@ -2,12 +2,8 @@
 	"game3":{
 		"exec": "program3",
 		"args": {
-			"-a1": {
-				"default": 100,
-				"editable": false
-			},
-			"-a2": {
-				"default": 200
+			"-a3": {
+				"default": 300
 			}
 		}
 	}
