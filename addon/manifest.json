@@ -1,12 +1,14 @@
 {
-	"exec": "game4",
-	"args": {
-		"-a1": {
-			"default": 100,
-			"editable": "False"
-		},
-		"-a2": {
-			"default": 200
+	"game4":{
+		"exec": "program4",
+		"args": {
+			"-a1": {
+				"default": 100,
+				"editable": "False"
+			},
+			"-a2": {
+				"default": 200
+			}
 		}
 	}
 }
