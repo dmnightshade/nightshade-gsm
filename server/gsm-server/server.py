@@ -1,4 +1,5 @@
 import json
+from addonLoader import *
 from socketserver import StreamRequestHandler, ThreadingTCPServer, BaseServer
 from typing import Tuple, Any
 
@@ -55,4 +56,3 @@ class GSMServer(ThreadingTCPServer):
 
 if __name__ == "__main__":
     GSMServer()
-
