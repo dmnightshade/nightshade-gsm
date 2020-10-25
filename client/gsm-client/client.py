@@ -71,11 +71,15 @@ class Client(QMainWindow):
 
         # Remove previous game list
         if self.game_list is not None:
+            self.game_list.setParent(None)
+            self.game_list.hide()
             self.game_area.layout().removeWidget(self.game_list)
             self.game_list = None
 
         # Remove any previous creation area
         if self.game_creation is not None:
+            self.game_creation.setParent(None)
+            self.game_creation.hide()
             self.game_area.layout().removeWidget(self.game_creation)
             self.game_creation = None
 
