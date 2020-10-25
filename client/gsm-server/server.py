@@ -1,5 +1,5 @@
-from socketserver import TCPServer, StreamRequestHandler
 import json
+from socketserver import TCPServer, StreamRequestHandler
 
 
 class Handler(StreamRequestHandler):
@@ -7,23 +7,11 @@ class Handler(StreamRequestHandler):
         "game2": {
             "exec": "program1",
             "args": {
-                "-a1": {
-                    "default": 100,
-                    "editable": False
-                },
-                "-a2": {
-                    "default": 200
-                }
-            }
+                "-a1": {"default": 100, "editable": False},
+                "-a2": {"default": 200},
             },
-        "game1": {
-            "exec": "program2",
-            "args": {
-                "-a3": {
-                    "default": 300
-                }
-            }
-        }
+        },
+        "game1": {"exec": "program2", "args": {"-a3": {"default": 300}}},
     }
 
     def handle(self) -> None:
@@ -46,5 +34,5 @@ def start_server() -> None:
         server.serve_forever()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     start_server()

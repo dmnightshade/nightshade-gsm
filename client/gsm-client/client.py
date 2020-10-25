@@ -1,10 +1,9 @@
-from threading import Thread
 import json
-from qtpy.QtWidgets import *
-from qtpy.QtNetwork import QTcpSocket
-from qtpy.QtCore import *
-from time import sleep, perf_counter
 from typing import Dict
+
+from qtpy.QtCore import *
+from qtpy.QtNetwork import QTcpSocket
+from qtpy.QtWidgets import *
 
 
 class Client(QMainWindow):
@@ -62,7 +61,6 @@ class Client(QMainWindow):
         self.socket.waitForReadyRead(msecs=3000)
         game_list = str(self.socket.readLine(), encoding="utf-8")
         game_list = json.loads(game_list)
-        print(game_list)
         return game_list
 
     def populate_game_list(self) -> None:
@@ -123,7 +121,7 @@ class Client(QMainWindow):
         self.change_page(1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Start client
     app = QApplication([])
     client = Client()
