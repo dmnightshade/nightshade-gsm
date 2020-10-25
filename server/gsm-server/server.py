@@ -1,6 +1,11 @@
 import json
+import zipfile as zipf
 from socketserver import TCPServer, StreamRequestHandler
 
+def addon_loader():
+    addonFile = zipf.ZipFile('games/game4.zip')
+    manifestFile = addonFile.read('manifest.json')
+    print(manifestFile)
 
 class Handler(StreamRequestHandler):
     games = {
@@ -35,4 +40,5 @@ def start_server() -> None:
 
 
 if __name__ == "__main__":
+    addon_loader()
     start_server()
