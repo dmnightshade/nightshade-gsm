@@ -5,5 +5,7 @@
 # PyCharm Project Files
 /.idea/
 
+# Python
+*.egg-info
 /games/
 /__pycache__/
