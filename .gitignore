@@ -1,5 +1,9 @@
 # Virtual Environment
 /venv/
+/gsm-env/
 
 # PyCharm Project Files
 /.idea/
+
+/games/
+/__pycache__/
