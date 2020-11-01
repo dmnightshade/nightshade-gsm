@@ -8,6 +8,9 @@ from qtpy.QtWidgets import *
 
 class Client(QMainWindow):
     def __init__(self):
+        #### CONSTANTS: Defines windows size
+        CLIENT_WIN_SIZE_X = 600
+        CLIENT_WIN_SIZE_Y = 400
         super().__init__(parent=None)
 
         self.socket = QTcpSocket(self)
@@ -16,10 +19,13 @@ class Client(QMainWindow):
         main_widget = QWidget(self)
         self.layout = QStackedLayout(main_widget)
         self.setCentralWidget(main_widget)
+        self.setWindowTitle("Hamster Game Manager")
+        self.resize(CLIENT_WIN_SIZE_X, CLIENT_WIN_SIZE_Y)
 
         #### Not connected page ####
         not_connected = QPushButton(text="Connect to server", parent=main_widget)
         not_connected.clicked.connect(self.connect_to_server)
+        not_connected.setMaximumSize(200,30)
         self.layout.addWidget(not_connected)
         self.socket.disconnected.connect(lambda: self.change_page(0))
 
